@@ -1,0 +1,97 @@
+
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+$gutter: 25px;
+$z-depth-1: 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+$logo-background: #0a62c3;
+$logo-halo-size: 100px;
+$button-background: #f6f6f6;
+$button-foreground: #1f1f1f;
+
+body,
+html,
+#__next {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: $font-family;
+}
+
+p {
+  margin: 0;
+}
+
+.layout {
+  padding: $gutter;
+}
+
+.logo {
+  background-color: $logo-background;
+  border-radius: 1000000px;
+  box-shadow: $z-depth-1;
+}
+
+.button {
+
+  background-color: $button-background;
+  color: $button-foreground;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: $z-depth-1;
+
+  &:hover {
+    background-color: lighten( $button-background, 3 );
+  }
+
+  &:active {
+    background-color: darken( $button-background, 3 );
+  }
+
+  &:not(.circular) {
+    padding: 10px 14px;
+    border-radius: 6px;
+  }
+
+  &.circular {
+    padding: 0;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 70px;
+  }
+
+}
+
+.layout.home {
+
+  display: grid;
+  grid-gap: 50px;
+  grid-template-areas: "logo logo" "btn1 btn2";
+  transform: translateY(calc(50vh - 50% + 60px)); // Centering
+
+  .logo {
+    width: 192px;
+    height: 192px;
+    grid-area: logo;
+    margin: 0 auto;
+    box-shadow: $z-depth-1,
+                0 0 0 100px transparentize( $logo-background, .94 ),
+                0 0 0 330px transparentize( $logo-background, .94 ),
+                0 0 0 990px transparentize( $logo-background, .94 );
+  }
+
+  .button {
+
+    &.demo {
+      grid-area: btn1;
+      margin-left: auto;
+    }
+
+    &.docs {
+      grid-area: btn2;
+      margin-right: auto;
+    }
+
+  }
+
+}
